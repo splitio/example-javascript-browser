@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Hello Split</title>
+    <script src="https://cdn.split.io/sdk/split-8.2.0.js"></script>
+  </head>
+  <body>
+    <script>
+
+      // CHANGE THIS: Copy and paste the feature name from 
+      var featureName = "sample_feature";
+
+      // Change this to represent your user or account id.
+      var userKey = 'userId-1';
+
+      var div = document.createElement("div");
+      document.body.appendChild(div);
+      div.appendChild(document.createTextNode('clickMe'));
+
+      sdk = splitio({
+            core: {
+                authorizationKey: '<CHANGE_ME>',
+                key: userKey
+            },
+            startup: {
+                readyTimeout: 2
+            }
+      });
+
+      var client = sdk.client();
+      
+      function onReady() {
+        var treatment = client.getTreatment(featureName);
+
+        console.log("Treatment for feature: " + featureName + " is: " + treatment);
+        div.replaceChild(document.createTextNode(treatment), div.firstChild);
+      }
+
+      // Evaluate treatment when the SDK is ready to operate.
+      client.on(client.Event.SDK_READY, onReady);
+      
+    </script>
+  </body>
+</html>
