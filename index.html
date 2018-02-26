@@ -3,12 +3,12 @@
   <head>
     <meta charset="utf-8">
     <title>Hello Split</title>
-    <script src="https://cdn.split.io/sdk/split-9.4.0.min.js"></script>
+    <script src="https://cdn.split.io/sdk/split-10.0.0.min.js"></script>
   </head>
   <body>
     <script>
 
-      // CHANGE THIS: Copy and paste the feature name from 
+      // CHANGE THIS: Copy and paste the feature name from
       var featureName = "My_Feature_Name";
 
       // Change this to represent your user or account id. (usually a dynamic value)
@@ -29,7 +29,7 @@
       });
 
       var client = sdk.client();
-      
+
       function onReady() {
         var treatment = client.getTreatment(featureName);
 
@@ -39,7 +39,7 @@
 
       // Evaluate treatment when the SDK is ready to operate.
       client.on(client.Event.SDK_READY, onReady);
-      
+
     </script>
   </body>
 </html>
