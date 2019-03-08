@@ -3,12 +3,12 @@
   <head>
     <meta charset="utf-8">
     <title>Hello Split</title>
-    <script src="https://cdn.split.io/sdk/split-10.2.0.min.js"></script>
+    <script src="https://cdn.split.io/sdk/split-10.6.0.min.js"></script>
   </head>
   <body>
     <script>
 
-      // CHANGE THIS: Copy and paste the feature name from
+      // CHANGE THIS: Copy and paste the feature name from Split web console.
       var featureName = "My_Feature_Name";
 
       // Change this to represent your user or account id. (usually a dynamic value)
@@ -19,13 +19,13 @@
       div.appendChild(document.createTextNode('clickMe'));
 
       sdk = splitio({
-            core: {
-                authorizationKey: '<CHANGE_ME>',
-                key: userKey
-            },
-            startup: {
-                readyTimeout: 2
-            }
+          core: {
+              authorizationKey: '<CHANGE_ME>',
+              key: userKey
+          },
+          startup: {
+              readyTimeout: 2
+          }
       });
 
       var client = sdk.client();
