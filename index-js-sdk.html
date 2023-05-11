@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Hello Split</title>
+    <script src="https://cdn.split.io/sdk/split-10.22.4.min.js"></script>
+  </head>
+  <body>
+    <script>
+
+      // Change this with the name of your feature flag, that you can find in the Split user interface
+      var featureFlagName = "my_feature_flag_name";
+
+      // Change this to represent your user or account id
+      var userKey = 'userId-1';
+
+      var div = document.createElement("div");
+      document.body.appendChild(div);
+      div.appendChild(document.createTextNode('clickMe'));
+
+      sdk = splitio({
+        core: {
+          // Change this with your SDK key of type client-side
+          authorizationKey: '<YOUR_SDK_KEY>',
+          key: userKey
+        }
+      });
+
+      var client = sdk.client();
+
+      function onReady() {
+        var treatment = client.getTreatment(featureFlagName);
+
+        console.log("Treatment for feature flag " + featureFlagName + " is " + treatment);
+        div.replaceChild(document.createTextNode(treatment), div.firstChild);
+      }
+
+      // Evaluate treatment when the SDK is ready to operate.
+      client.on(client.Event.SDK_READY, onReady);
+
+    </script>
+  </body>
+</html>
