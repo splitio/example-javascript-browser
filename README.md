@@ -1,6 +1,7 @@
 ## Example Demo Page to show Split JavaScript SDK and JavaScript Browser SDK
 
-This are two single pages that show how to set up the [JavaScript SDK](https://github.com/splitio/javascript-client) and the [JavaScript Browser SDK](https://github.com/splitio/javascript-browser-client). Follow the instructions below to make the changes needed using the information obtained from Split user interface.
+These are two single pages that show how to set up the [JavaScript SDK](https://github.com/splitio/javascript-client) and the [JavaScript Browser SDK](https://github.com/splitio/javascript-browser-client). Follow the instructions below to make the changes needed using the information obtained from Split user interface.
+
 
 ### Get started
 
