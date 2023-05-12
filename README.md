@@ -6,5 +6,5 @@ These are two single pages that show how to set up the [JavaScript SDK](https://
 ### Get started
 
  * Log in to the Split user interface, go to the "Admin Tab", copy an SDK key of type "Client-side", and assign it to the `authorizationKey` config param in either the `index-js-sdk.html` file or `index-js-browser-sdk.html` file, in order to try the JavaScript SDK or JavaScript Browser SDK respectively.
- * [Create a feature flag](CREATE_FEATURE_FLAG.md) and assign its name to the variable `featureFlagName` in the HTML file.
+ * [Create a feature flag](https://help.split.io/hc/en-us/articles/9805284145549-Creating-a-rollout-plan) and assign its name to the variable `featureFlagName` in the HTML file.
  * Open the HTML file in your browser.
