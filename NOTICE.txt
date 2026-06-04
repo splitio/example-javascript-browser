@@ -1,0 +1,3 @@
+Harness FME Browser SDK example copyright 2026 Harness Inc. (https://harness.io/).
+
+Originally developed by Split Software, Inc. (https://www.split.io/). Copyright 2017-2023 Split Software, Inc.
