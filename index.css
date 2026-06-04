@@ -1,0 +1,24 @@
+html {
+  min-height: 100vh; 
+}
+
+body {
+  color: white;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: large;
+  font-weight: lighter;
+  text-align: center;
+  background-image: linear-gradient(to bottom, #87b8d1,  #ffffff);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.blue-button {
+    border: 1px solid gray;
+    letter-spacing: .28px;
+    border-radius: 5px;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 14px;
+}
