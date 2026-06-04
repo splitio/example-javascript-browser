@@ -2,43 +2,79 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Hello Split</title>
-    <!-- For other bundle versions check our documentation at https://help.split.io/hc/en-us/articles/360058730852 -->
+    <link rel="stylesheet" href="./index.css">
+    <title>Hello FME Browser SDK</title>
+    <!-- For other bundle versions see https://developer.harness.io/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/browser-sdk#initialization -->
     <script src="https://cdn.split.io/sdk/split-browser-0.9.4.min.js"></script>
   </head>
   <body>
     <script>
+      function main()
+      {
+        // CHANGE THIS: Copy and paste your Harness FME client-side SDK API key.
+        // In Harness, look under FME Settings | Projects | View | SDK API Keys.
+        var sdkKey = 'YOUR_SDK_KEY';
 
-      // Change this with the name of your feature flag, that you can find in the Split user interface
-      var featureFlagName = "my_feature_flag_name";
+        // CHANGE THIS: Copy and paste the feature flag name from Harness FME.
+        var featureFlagName = 'FEATURE_FLAG_NAME';
 
-      // Change this to represent your user or account id
-      var userKey = 'userId-1';
+        // CHANGE THIS: Provide a user or account ID (usually a dynamic value). This value
+        // is used for feature flag targeting (for matching with a flag targeting rule and
+        // for percentage distribution within a targeting rule).
+        var userKey = 'user001';
 
-      var div = document.createElement("div");
-      document.body.appendChild(div);
-      div.appendChild(document.createTextNode('clickMe'));
+        var div = document.createElement('div');
+        div.appendChild(document.createTextNode('Initializing...'));
+        document.body.appendChild(div);
 
-      sdk = splitio.SplitFactory({
-        core: {
-          // Change this with your SDK key of type client-side
-          authorizationKey: '<YOUR_SDK_KEY>',
-          key: userKey
+        if ( sdkKey == 'YOUR_SDK_KEY' ) {
+          div.replaceChild(document.createTextNode('Please edit index-js-browser-sdk-full.html to ' +
+          'set your authorization key and feature flag name, then reload the page.'), div.firstChild);
+          return;
         }
-      });
 
-      var client = sdk.client();
+        sdk = splitio.SplitFactory({
+          core: {
+            authorizationKey: sdkKey,
+            key: userKey
+          }
+        });
 
-      function onReady() {
-        var treatment = client.getTreatment(featureFlagName);
+        var client = sdk.client();
 
-        console.log("Treatment for feature flag " + featureFlagName + " is " + treatment);
-        div.replaceChild(document.createTextNode(treatment), div.firstChild);
+        function evaluateFlag() {
+
+          // Evaluate the feature flag for the given user or account. Feature flag impressions
+          // (evaluation info) should appear in Live tail soon after you run the demo.
+          var treatment = client.getTreatment(featureFlagName);
+          console.log(`The treatment for feature flag ${featureFlagName} is ${treatment}.`);
+
+          div.replaceWith(
+            Object.assign(
+              document.createElement('div'), 
+              { innerHTML: `For <b>${userKey}</b> the treatment for feature flag <b>${featureFlagName}</b> is <b>${treatment}</b>.` }
+            )
+          );
+        }
+
+        client.once(client.Event.SDK_READY , evaluateFlag);
+        client.on  (client.Event.SDK_UPDATE, evaluateFlag);
+
+        document.body.appendChild(document.createElement('p'))
+        b = document.body.appendChild(
+          Object.assign(
+            document.createElement('button'), 
+            { innerText: 'Send event', 
+              onclick: () => {
+                client.track('user', 'click', 1, null);             // Send event to FME. You'll see events recieved in Data hub | Live tail.
+                b.appendChild(document.createTextNode(" \u2714"));  // append ✔ to button text
+              }
+            }
+          )
+        );
+
       }
-
-      // Evaluate treatment when the SDK is ready to operate.
-      client.on(client.Event.SDK_READY, onReady);
-
+      main();
     </script>
   </body>
 </html>
