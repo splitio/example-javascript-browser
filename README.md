@@ -49,4 +49,4 @@ For more information about feature flags, see our [Feature Management](https://d
 
 -------
 
-[Harness](https://harness.io) is a software delivery platform that delivers intelligent AI automation, so your team ships code faster, safer, and smarter.
+[Harness](https://harness.io) is an autonomous Software Development Lifecycle Platform that provides software delivery, security testing, runtime protection, and cost management, so your team ships code faster, safer, and smarter.
